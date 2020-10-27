@@ -1,0 +1,26 @@
+<template>
+    <template if:false={flagtile}>
+    <div>
+    <img src={pass_val.image__c} onclick={navigateToTabPage} alt="profilepic" style="float:left;width:85px;height:100px;border-radius:15px;padding:10px" class="image"/>  
+    <!--p style="margin-top:4px;padding-top:8px"-->
+     <p style="padding-top:8px">
+    <a onclick={redirectToContactPage} data-id={pass_val.Id}>{pass_val.Name}</a><br/>
+    <a onclick={navigateToTabPage} data-record-id={pass_val.Id}>{pass_val.Name}</a><br/>
+</p>
+    {pass_val.Price__c}<br/>
+    {pass_val.Quantity__c}<br/>
+    {pass_val.Brand__c}<br/>
+</div>
+</template>
+   <template if:true={flagtile}> 
+    <div class="slds-clearfix" style="margin-left:0px;padding-left:0px">
+        <img src={pass_val.image__c} onclick={navigateToTabPage} alt="profilepic" style="float:left;width:85px;height:100px;border-radius:15px;margin-left:0px"/>  
+        <!--p style="margin-top:4px;padding-top:8px"-->
+        <a onclick={redirectToContactPage} data-id={pass_val.Id} style="margin-left:0px">{pass_val.Name}</a><br/>
+        <a onclick={navigateToTabPage} data-record-id={pass_val.Id}>{pass_val.Name}</a><br/> 
+        {pass_val.Price__c}<br/>
+        {pass_val.Quantity__c}<br/>
+        {pass_val.Brand__c}<br/>
+    </div>   
+   </template>
+</template>
