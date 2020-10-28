@@ -3,9 +3,9 @@ import { NavigationMixin } from 'lightning/navigation';
 
 export default class CandieTile extends NavigationMixin(LightningElement) {
     @api pass_val;
-    @api flagtile;
+  //  @api flagtile;
     @api selectedrecID='';
-    redirectToContactPage(event) {
+   /* redirectToContactPage(event) {
         // Navigate to the Account home page
         this[NavigationMixin.Navigate]({
             type: 'standard__recordPage',
@@ -17,16 +17,17 @@ export default class CandieTile extends NavigationMixin(LightningElement) {
             }
             
         });
-    }
+    }*/
 
-    navigateToTabPage(event) {
+    navigateToDetailsPage(event) {
         
             let compDefinition = {
                 componentDef: "c:candiesPopup",
                 attributes: {
-                    ParentMessage : this.pass_val.Name,
-                    ParentMessage1:this.pass_val.image__c,
-                    ParentMessage2:this.pass_val.Price__c,
+                    ParentMessageName : this.pass_val.Name,
+                    ParentMessageImage:this.pass_val.image__c,
+                    ParentMessagePrice:this.pass_val.Price__c,
+                    ParentMessageQuantity: this.pass_val.Quantity__c
                     
                 }
                 
@@ -53,10 +54,10 @@ export default class CandieTile extends NavigationMixin(LightningElement) {
             
         });
     }
-    handleClickPage(event){
+   /* handleClickPage(event){
         console.log('eventId:'+event.target.dataset.recordId);
         this.navigateToTabPage(event.target.dataset.recordId);
-    }
+    }*/
 
 
 
