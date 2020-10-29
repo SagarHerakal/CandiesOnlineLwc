@@ -1,17 +1,18 @@
 <template>
 
-    <lightning-card>
-        <nav role="navigation" aria-label="Breadcrumbs">
-            <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
-              <li class="slds-breadcrumb__item">
-                <a href="https://curious-hawk-mfygxc-dev-ed.lightning.force.com/lightning/n/contact_pagination">Home</a>
-              </li>
-              <li class="slds-breadcrumb__item">
-                <a href="javascript:void(0);">{ParentMessageName}</a>
-              </li>
-            </ol>
-          </nav>
-        </lightning-card>
+        <lightning-card>
+            <lightning-breadcrumbs>
+                <lightning-breadcrumb
+                    label="Home"
+                     href="https://curious-hawk-mfygxc-dev-ed.lightning.force.com/lightning/n/CandyStore"
+                   >
+                </lightning-breadcrumb>
+                <lightning-breadcrumb
+                    label={ParentMessageName}>
+                </lightning-breadcrumb>
+                
+            </lightning-breadcrumbs>
+            </lightning-card>
    
     <!--overlay modal/popup display-->
     <lightning-card>
@@ -42,7 +43,7 @@
                 <!--remove button-->
     
                 <lightning-button  id="submit_button1" label="Remove" 
-                title="Destructive action" onclick={remove1} disabled={checkButton}></lightning-button></br>
+                title="Destructive action" onclick={closeModal} ></lightning-button></br>
             
              </div>
 
@@ -71,7 +72,7 @@
 
                         <!--checkout button-->
                         <div class=content>
-                            <lightning-button variant="destructive" id="submit_button" label="Check Out" title="Destructive action" disabled={checkButton} onclick={navigateToOrderPage} ></lightning-button>
+                            <lightning-button variant="destructive" id="submit_button" label="Check Out" title="Destructive action" disabled={checkButton} onclick={saveOrder} ></lightning-button>
                         </div>
 
                         

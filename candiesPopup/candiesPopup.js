@@ -1,5 +1,6 @@
 import { LightningElement,track,api} from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
+import createOrder from '@salesforce/apex/CatProd.createOrder';
 
 export default class CandiesPopup extends NavigationMixin(LightningElement) {
     @track isModalOpen = false;
@@ -7,6 +8,7 @@ export default class CandiesPopup extends NavigationMixin(LightningElement) {
    
     @api ParentMessageImage='';
     @api ParentMessagePrice='';
+    @api ParentMessageId='';
     @api ParentMessageQuantity = '';
     @api count=1;
    // calsum=ParentMessagePrice;
@@ -14,6 +16,9 @@ export default class CandiesPopup extends NavigationMixin(LightningElement) {
     @track flagcart;
     @track checkButton;
     @track calsum;
+    status;
+    @api orders;
+    @api orderId;
     a;
     
 
@@ -99,17 +104,35 @@ export default class CandiesPopup extends NavigationMixin(LightningElement) {
       },1500);
   }
 
+  saveOrder(){
+    this.status='In Cart';
+     createOrder({status:this.status,amount:this.calsum,prodId:this.ParentMessageId,quant:this.count}).then(result=>{
+      console.log(result);
+      this.orders=result;
+      this.orderId=this.orders.Id;
+      console.log(this.orderId);
+      this.navigateToOrderPage();
+     })
+     .catch(error => {
+      this.error = error;
+       console.log(this.error);
+      });
+  }  
+
 
     navigateToOrderPage(event) {
       console.log("Checkout done!!!")
       let compDefinition = {
           componentDef:"c:orderPage",
           attributes: {
-              PMessagesName : this.ParentMessageName,
-              PMessagesImage: this.ParentMessageImage,
-             // PMessagesPrice: this.ParentMessagePrice,   
-             PMessagesPrice: this.calsum,
-             PMessagesQuantity: this.count
+            Name : this.ParentMessageName,
+            Image: this.ParentMessageImage, 
+            Price: this.ParentMessagePrice,  
+            subtotal: this.calsum,
+            Count: this.count,
+            total:this.calsum+10,
+            prodId:this.ParentMessageId,
+            OrderId:this.orderId
           }
       };
       // Base64 encode the compDefinition JS object
