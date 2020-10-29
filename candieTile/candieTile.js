@@ -35,7 +35,8 @@ export default class CandieTile extends NavigationMixin(LightningElement) {
             };
             // Base64 encode the compDefinition JS object
             let encodedCompDef = btoa(JSON.stringify(compDefinition));
-        console.log('eventId:'+event.target.dataset.recordId);
+        //console.log('eventId:'+event.target.dataset.recordId);
+        console.log('base 64' +encodedCompDef);
         this[NavigationMixin.Navigate]({
             type: "standard__webPage",
             attributes: {
@@ -48,12 +49,14 @@ export default class CandieTile extends NavigationMixin(LightningElement) {
                
               // apiName:'Candies_Popup',
               url: "/one/one.app#" + encodedCompDef
+              
                //url:"https://curious-hawk-mfygxc-dev-ed.lightning.force.com/lightning/n/Candies_PopUp" + encodedCompDef
                
             },
            
             
         });
+        console.log("/one/one.app#" + encodedCompDef);
     }
    /* handleClickPage(event){
         console.log('eventId:'+event.target.dataset.recordId);
