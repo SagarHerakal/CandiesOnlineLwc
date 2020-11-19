@@ -12,7 +12,7 @@ export default class Pagination extends LightningElement {
       @api 
      set records(data){
        if(data){
-         // console.log('entered pagination method'+data);
+         console.log('entered pagination method'+data);
           this.totalRecords = data;
           this.totalPage = Math.ceil(data.length/this.recordSize);
           this.updateRecords();   

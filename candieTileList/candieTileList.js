@@ -66,6 +66,8 @@ export default class CandieTileList extends LightningElement {
 		console.log("another button clicked")
 
   }
+
+  //ascending and descending
   
 @track selectedOption;
 //flag = null;

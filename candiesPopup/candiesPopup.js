@@ -53,7 +53,7 @@ export default class CandiesPopup extends NavigationMixin(LightningElement) {
   
 
     areDetailsVisible = false;
-
+    //checkbox
     handleChange(event) {
         this.areDetailsVisible = event.target.checked;
     }
@@ -99,6 +99,8 @@ export default class CandiesPopup extends NavigationMixin(LightningElement) {
           this.flagsold = false;
           this.flagcart = true;
          }
+         this.flagsold = true;
+         this.flagcart = false;
          this.calsum=this.ParentMessagePrice;
          console.log(this.calsum);
       },1500);
@@ -107,7 +109,7 @@ export default class CandiesPopup extends NavigationMixin(LightningElement) {
   saveOrder(){
     this.status='In Cart';
      createOrder({status:this.status,amount:this.calsum,prodId:this.ParentMessageId,quant:this.count}).then(result=>{
-      console.log(result);
+      console.log('sagar'+result);
       this.orders=result;
       this.orderId=this.orders.Id;
       console.log(this.orderId);

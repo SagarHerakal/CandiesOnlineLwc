@@ -14,110 +14,46 @@
 
     
     <lightning-card>
-        <lightning-button label="reset" variant="brand" onclick={resethandler} class="slds-float_right slds-p-right_xx-small"></lightning-button><br/>
+        <lightning-button label="Reset" variant="brand" onclick={resethandler} class="slds-float_right slds-p-right_xx-small"></lightning-button><br/>
         <lightning-input type="search" class="slds-p-left_xx-small slds-p-right_xx-small" onchange={handleTextChange} value={searchKey} label="Search store"></lightning-input>
   
               <!--Load categories from apex in Select List -->
-     <lightning-card title="Categories">
+              <div class="slds-m-around_medium">
+                <div class="slds-p-top_small">            
         <template if:true={categoriesOptionList}>
-            <div class="slds-m-around_medium">
-                    <select onchange={handleCategoryChange}>
-                        <option value="undefined">Select</option>
-                        <template for:each={categoriesOptionList} for:item="item">
-                            <option value={item.value} key={item.value}>{item.label}</option>
-                        </template>
-                    </select>    
-                          
-            </div>
+            <lightning-combobox
+            name="progress"
+            label="Categories"
+            value={value}
+            placeholder="Select"
+            options={categoriesOptionList}
+            onchange={handleCategoryChange} ></lightning-combobox>
         </template>
-    </lightning-card>
-
-
+        </div>
          <!--Load brands from apex in Select List -->
-         <lightning-card title="Brands">
+         <div class="slds-p-top_small"> 
             <template if:true={brandOptionList}>
-                <div class="slds-m-around_medium">
-                        <select onchange={handleBrandChange} >
-                            <option value="undefined">Select</option>
-                            <template for:each={brandOptionList} for:item="item">
-                                <option value={item.value} key={item.value}>{item.label}</option>
-                            </template>
-                        </select>    
-                              
-                </div>
+                <lightning-combobox
+                name="progress"
+                label="Brands"
+                value={value}
+                placeholder="Select"
+                options={brandOptionList}
+                onchange={handleBrandChange} ></lightning-combobox>
             </template>
-        </lightning-card>
-
-
-
+        </div>
              <!--Load makers from apex in Select List -->
-     <lightning-card title="Maker">
+             <div class="slds-p-top_small">    
         <template if:true={makersOptionList}>
-            <div class="slds-m-around_medium">
-                    <select onchange={handleMakerChange}>
-                        <option value="undefined">Select</option>
-                        <template for:each={makersOptionList} for:item="item">
-                            <option value={item.value} key={item.value}>{item.label}</option>
-                        </template>
-                    </select>    
-                              
-            </div>
+            <lightning-combobox
+            name="progress"
+            label="Manufacturer"
+            value={value}
+            placeholder="Select"
+            options={makersOptionList}
+            onchange={handleMakerChange} ></lightning-combobox>           
         </template>
-    </lightning-card>
-
-        <!--c-contacts-comp co={cons.data}></c-contacts-comp-->
-    </lightning-card><lightning-card>
-        <lightning-button label="reset" variant="brand" onclick={resethandler} class="slds-float_right slds-p-right_xx-small"></lightning-button><br/>
-        <lightning-input type="search" class="slds-p-left_xx-small slds-p-right_xx-small" onchange={handleTextChange} value={searchKey} label="Search store"></lightning-input>
-  
-              <!--Load categories from apex in Select List -->
-     <lightning-card title="Categories">
-        <template if:true={categoriesOptionList}>
-            <div class="slds-m-around_medium">
-                    <select onchange={handleCategoryChange}>
-                        <option value="undefined">Select</option>
-                        <template for:each={categoriesOptionList} for:item="item">
-                            <option value={item.value} key={item.value}>{item.label}</option>
-                        </template>
-                    </select>    
-                          
-            </div>
-        </template>
-    </lightning-card>
-
-
-         <!--Load brands from apex in Select List -->
-         <lightning-card title="Brands">
-            <template if:true={brandOptionList}>
-                <div class="slds-m-around_medium">
-                        <select onchange={handleBrandChange} >
-                            <option value="undefined">Select</option>
-                            <template for:each={brandOptionList} for:item="item">
-                                <option value={item.value} key={item.value}>{item.label}</option>
-                            </template>
-                        </select>    
-                              
-                </div>
-            </template>
-        </lightning-card>
-
-
-
-             <!--Load makers from apex in Select List -->
-     <lightning-card title="Maker">
-        <template if:true={makersOptionList}>
-            <div class="slds-m-around_medium">
-                    <select onchange={handleMakerChange}>
-                        <option value="undefined">Select</option>
-                        <template for:each={makersOptionList} for:item="item">
-                            <option value={item.value} key={item.value}>{item.label}</option>
-                        </template>
-                    </select>    
-                              
-            </div>
-        </template>
-    </lightning-card>
-
-        <!--c-contacts-comp co={cons.data}></c-contacts-comp-->
+    </div>
+    </div>
     </lightning-card>
 </template>
